@@ -1,23 +1,24 @@
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     val: number
- *     next: ListNode | null
- *     constructor(val?: number, next?: ListNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.next = (next===undefined ? null : next)
- *     }
- * }
- */
 
-function middleNode(head: ListNode | null): ListNode | null {
-    
+ //https://leetcode.com/problems/middle-of-the-linked-list/description/
+ // Definition for singly-linked list.
+ class ListNode {
+    val: number
+      next: ListNode | null
+      constructor(val?: number, next?: ListNode | null) {
+          this.val = (val===undefined ? 0 : val)
+          this.next = (next===undefined ? null : next)
+      }
+  }
+ 
+
+  function middleNode(head: ListNode | null): ListNode | null {
+    let fast = head?.next;
     let slow = head;
-    let fast = head 
-
-    while(fast!=null&& fast.next!= null){
-      slow = slow.next
-      fast = fast.next.next
+    
+    while(fast && slow) {
+        fast = fast.next?.next;
+        slow = slow.next;
     }
+    
     return slow;
 };
